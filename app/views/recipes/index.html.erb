@@ -21,9 +21,25 @@
 		</th>
 	</tr>
 	<% @recipes.each do |recipe| %>
-		<tr class=<%= cycle('even', 'odd') %>>
-			<td><%= image_tag(recipe["image_url"]) %></td>
-			<td><%= recipe["title"] %></td>
+		<tr>
+			<td>
+				<% 
+					@title = sanitize recipe["title"] 
+					@url = recipe['f2f_url']
+					@image_url = recipe['image_url']
+				%>
+
+				<%= link_to(@url) do %>
+					<%= image_tag(@image_url, title: @title, size: "100x100") %>
+				<% end %>
+				<a href=<%= recipe['f2f_url'] %>, )>
+					
+				</a>
+			</td>
+			<td>
+				
+				<%= link_to @title, @url %>
+			</td>
 			<td><%= recipe["social_rank"] %></td>
 		</tr>
 	<% end %>
