@@ -1,0 +1,33 @@
+<p>Powered By Food2Fork.com</p>
+
+<h1>Searching for - <%= @search_term %></h1>
+
+<% if @recipes.nil? %>
+
+<p>No Courses found with the relevant information... Sorry</p>
+
+<% else %>
+
+<table>
+	<tr>
+		<th>
+			Image
+		</th>
+		<th>
+			Title
+		</th>
+		<th>
+			 Social Rank
+		</th>
+	</tr>
+	<% @recipes.each do |recipe| %>
+		<tr class=<%= cycle('even', 'odd') %>>
+			<td><%= image_tag(recipe["image_url"]) %></td>
+			<td><%= recipe["title"] %></td>
+			<td><%= recipe["social_rank"] %></td>
+		</tr>
+	<% end %>
+
+</table>
+
+<% end %>
